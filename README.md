@@ -7,7 +7,7 @@ To get this server up and running, do the following:
 
 * Install [Node](http://nodejs.org)
 * Type `npm install` the first time to get the server's dependencies
-* Type `foreman start` to start the server
+* Type `node app.js` to start the server
 * Go to `http://localhost:5000` in your browser
 
 ## Testing the API using cURL
