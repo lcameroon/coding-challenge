@@ -73,6 +73,8 @@ var server = restify.createServer({
 });
 server.use(restify.bodyParser());
 server.post('/filter', api.postJSON);
-server.listen(5000, function() {
+
+var port = process.env.PORT || 5000;
+server.listen(port, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
