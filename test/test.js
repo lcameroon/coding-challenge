@@ -8,6 +8,9 @@ var client = restify.createJsonClient({
   version: '*'
 });
 
+// mockRequest
+var mockRequest = { "payload": [ { "drm": true, "episodeCount": 3, "image": { "showImage": "http://ninemsn.com.au/image.jpg" }, "slug": "show/slug-of-the-show", "title": "Title of the show" } ] }
+
 describe('Filter API test', function(){
 
   describe('Module api', function(){
@@ -23,7 +26,6 @@ describe('Filter API test', function(){
 
   describe('#dataFilter()', function(){
     it('Should Filter data by showImage, slug and title', function(){
-      var mockRequest = '{ "payload": [ { "drm": true, "episodeCount": 3, "image": { "showImage": "http://ninemsn.com.au/image.jpg" }, "slug": "show/slug-of-the-show", "title": "Title of the show" } ] }'
       var data = api.dataFilter(mockRequest);
       assert.equal(true, Array.isArray(data));
       assert.equal("http://ninemsn.com.au/image.jpg", data[0].image);
@@ -39,7 +41,6 @@ describe('Filter API test', function(){
 
   describe('#postJSON()', function(done){
     it('Should accept application/json', function(){
-      var mockRequest = { "payload": [ { "drm": true, "episodeCount": 3, "image": { "showImage": "http://ninemsn.com.au/image.jpg" }, "slug": "show/slug-of-the-show", "title": "Title of the show" } ] }
       client.post('/filter', mockRequest, function(err, req, res, data) {
         assert.equal("application/json", req.headers.accept);
         assert.equal(mockRequest, req.body);

@@ -7,7 +7,6 @@ api.dataFilter = function(data) {
   // fields to filter
   var fields = { image: 'showImage', slug: 'slug', title: 'title'};
   var show = [];
-  data = JSON.parse(data);
 
   if (Array.isArray(data.payload)) {
     for (var key in data.payload) {
