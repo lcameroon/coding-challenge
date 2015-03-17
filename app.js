@@ -71,7 +71,7 @@ var server = restify.createServer({
   }
 });
 server.use(restify.bodyParser());
-server.post('/filter', api.postJSON);
+server.post('/', api.postJSON);
 
 var port = process.env.PORT || 5000;
 server.listen(port, function() {
